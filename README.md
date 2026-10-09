@@ -2,6 +2,10 @@
 
 Chromium inside your Java app, off-screen. Web pages come out as pixels you draw yourself, and you feed them GLFW input. It was made for the in-game browser of [jukz](https://github.com/Nuulz/jukz), a Minecraft mod, but nothing here depends on Minecraft.
 
+![Ko-fi inside Minecraft through pane, in jukz's browser window](docs/kofi.jpg)
+
+*A real Ko-fi page inside Minecraft 26.2, drawn by pane in [jukz](https://github.com/Nuulz/jukz)'s in-game browser.*
+
 ```java
 Pane.configure(PaneConfig.at(dir.resolve("pane")).userAgentProduct("mygame"));
 
@@ -28,6 +32,10 @@ What you get:
 - **Popups stay in the page**: a link that would open a new window opens in the same view, so no native windows ever appear.
 - **The same-origin policy stays on**: pages can take payments safely.
 - **An installer**: it downloads Chromium from our copy at `chromium.nuulm.com`, verifies its SHA-256 and unpacks it to `home/<platform>/`, then skips all of that on later runs. You can point it at another copy with the same layout using `PaneConfig.mirror`, for example `PaneConfig.CINEMAMOD_MIRROR`.
+
+The first time, `Pane.install` downloads Chromium for the platform, and your app can show the progress while it does:
+
+![The first run: jukz's window downloading the browser, with a progress bar](docs/installing.jpg)
 
 ## Getting it
 
