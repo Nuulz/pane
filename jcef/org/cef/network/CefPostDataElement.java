@@ -16,6 +16,7 @@ public abstract class CefPostDataElement {
         PDE_TYPE_EMPTY,
         PDE_TYPE_BYTES,
         PDE_TYPE_FILE,
+        PDE_TYPE_NUM_VALUES,
     }
 
     // This CTOR can't be called directly. Call method create() instead.

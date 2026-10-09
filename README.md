@@ -31,7 +31,7 @@ What you get:
 - **The mouse cursor**: a hand over links and a text bar over fields, if you pass your GLFW window to `PaneConfig.glfwWindow`.
 - **Popups stay in the page**: a link that would open a new window opens in the same view, so no native windows ever appear.
 - **The same-origin policy stays on**: pages can take payments safely.
-- **An installer**: it downloads Chromium from our copy at `chromium.nuulm.com`, verifies its SHA-256 and unpacks it to `home/<platform>/`, then skips all of that on later runs. You can point it at another copy with the same layout using `PaneConfig.mirror`, for example `PaneConfig.CINEMAMOD_MIRROR`.
+- **An installer**: it downloads Chromium from our copy at `chromium.nuulm.com`, verifies its SHA-256 and unpacks it to `home/<platform>/`, then skips all of that on later runs. You can point it at another copy with the same layout using `PaneConfig.mirror` (or `-Dpane.mirror=...`).
 
 The first time, `Pane.install` downloads Chromium for the platform, and your app can show the progress while it does:
 
@@ -52,8 +52,8 @@ Platforms: Linux, Windows and macOS, each on x64 and arm64, as far as there are 
 
 ## Credits
 
-- [java-cef](https://github.com/chromiumembedded/java-cef) (BSD), the Java binding for the [Chromium Embedded Framework](https://bitbucket.org/chromiumembedded/cef). It's included as is in `jcef/`, in the version from [CinemaMod's fork](https://github.com/CinemaMod/java-cef), which reads GLFW input.
-- The Chromium builds downloaded at runtime are [CinemaMod](https://github.com/CinemaMod)'s builds of that fork, copied unchanged to `chromium.nuulm.com`.
+- [java-cef](https://github.com/chromiumembedded/java-cef) (BSD), the Java binding for the [Chromium Embedded Framework](https://bitbucket.org/chromiumembedded/cef). It's included in `jcef/` from [our fork](https://github.com/Nuulz/java-cef) (branch `pane`): upstream java-cef on CEF 152 (Chromium 152) with [CinemaMod's](https://github.com/CinemaMod/java-cef) off-screen and GLFW input changes merged in.
+- The Chromium builds downloaded at runtime are built from that fork by its GitHub Actions workflow (official CEF binaries from cef-builds.spotifycdn.com) and served from `chromium.nuulm.com`. They have no proprietary codecs: VP9/AV1/Opus play (YouTube), H.264/AAC don't.
 - The idea of drawing Chromium inside Minecraft comes from [MCEF](https://github.com/CinemaMod/mcef). pane is its own code (none of MCEF is in here), so it's MIT.
 
 ## License

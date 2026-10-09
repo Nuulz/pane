@@ -84,7 +84,7 @@ public final class Pane {
             CefSettings settings = new CefSettings();
             settings.windowless_rendering_enabled = true;
             settings.user_agent_product = config.userAgentProduct;
-            if (config.cache) settings.cache_path = config.cacheDir().toString();
+            if (config.cache) settings.cache_path = settings.root_cache_path = config.cacheDir().toString();
             settings.background_color = settings.new ColorType(255, 255, 255, 255);
             app = CefApp.getInstance(args, settings);
             client = app.createClient();

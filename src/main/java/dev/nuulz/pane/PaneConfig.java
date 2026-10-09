@@ -13,17 +13,15 @@ import java.util.function.LongSupplier;
  */
 public final class PaneConfig {
     /** The java-cef build this library's Java side matches: the natives must come from the same commit. */
-    public static final String JAVA_CEF_COMMIT = "eaeb3d4370aa3526ee237ad1981ad59af3de4dd1";
-    /** Our copy (R2) of CinemaMod's builds of java-cef (BSD): one tar.gz per platform plus its .sha256. */
+    public static final String JAVA_CEF_COMMIT = "059facfe231b9c032d5a6a12911e10fd5a287842";
+    /** Our builds (R2) of github.com/Nuulz/java-cef (BSD): one tar.gz per platform plus its .sha256. */
     public static final String DEFAULT_MIRROR = "https://chromium.nuulm.com";
-    /** CinemaMod's original host, same layout, if ours is ever down. */
-    public static final String CINEMAMOD_MIRROR = "https://mcef-download.cinemamod.com";
 
     final Path home;
-    String mirror = DEFAULT_MIRROR;
+    String mirror = System.getProperty("pane.mirror", DEFAULT_MIRROR);
     String userAgentProduct = "pane";
     boolean cache = true;
-    final List<String> switches = new ArrayList<>(List.of("--autoplay-policy=no-user-gesture-required"));
+    final List<String> switches = new ArrayList<>(List.of("--autoplay-policy=no-user-gesture-required", "--no-first-run"));
     LongSupplier window = () -> 0L;
 
     private PaneConfig(Path home) {
